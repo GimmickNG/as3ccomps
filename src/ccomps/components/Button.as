@@ -20,24 +20,23 @@ package ccomps.components
 		public function Button()
 		{
 			cl_label = new Label()
-			cl_view	 = 	this.add.component.complex(cl_label)	//adds complex component "cl_label" to this
-							.add.state(state)					//adds state "state" to this
+			cl_view	 = 	this.add.component.complex(cl_label)			//adds complex component "cl_label" to this
+							.add.state(state)			//adds state "state" to this
 							.add.event(MouseEvent.MOUSE_OVER, 	//for mouse_over event,
 								coalesce.events(hover.target(base), hover.target(cl_label))		//calls both hover for base and cl_label
 							)
 							.add.event(MouseEvent.CLICK,		//for click event,
-								coalesce.events(				//combines the following events:
-									hover.target(base), 		//hover for base and
+								coalesce.events(		//combines the following events:
+									hover.target(base), 	//hover for base and
 									mutator	.action(state, function bound(state:IState) {		//set bound function
-												this.state = state								//set state
-											}, state)											//passing state as parameters
-											.target(state)										//finally set the target object (state)
-											.build()											//and compile
-								)								//end combine
+												this.state = state			//set state
+											}, state)					//passing state as parameters
+											.target(state)					//finally set the target object (state)
+											.build()					//and compile
+								)				//end combine
 							)
 							.remove.component.complex(cl_label)	//remove component cl_label
-							.build()							//build component and assign to view
+							.build()				//build component and assign to view
 		}
 	}
-
 }
